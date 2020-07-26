@@ -1,11 +1,37 @@
-.array-container {
-    position: absolute;
-    left: 100px;
-}
+@media screen and (min-width: 480px){
+    .array-container {
+        display: flex;
+        align-items: baseline;
+        position: absolute;
+        width: 60vw;
+        height: 90vh;
+        top: 8vh;
+        left: 1vw;
+        background-color: #f0fff0;
+    }
 
-.array-bar {
-    width: 2px;
-    background-color: darkblue;
-    display: inline-block;
-    margin: 0 1px;
+    .array-bar {
+        align-items: bottom;
+        width: 2px;
+        background-color: darkblue;
+        display: inline-block;
+        margin: 0 1px;
+    }
+
+    .button-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
 }

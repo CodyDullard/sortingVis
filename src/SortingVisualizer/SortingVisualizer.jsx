@@ -16,23 +16,37 @@ export default class SortingVisualizer extends React.Component {
 
     resetArray() {
         const array = [];
-        for(let i = 0; i < 310; i++) {
-            array.push(randomIntBetween(5, 1000));
+        for(let i = 0; i < 200; i++) {
+            array.push(randomIntBetween(1,100));
         }
         this.setState({array});
     }
+
+    insertionSort() {}
+    selectionSort() {}
+    quickSort() {}
+    heapSort() {}
 
     render() {
         const {array} = this.state;
         
         return (
-            <div className="array-container">
-                {array.map((value, idx) => (
-                    <div 
-                    className="array-bar" 
-                    key={idx}
-                    style={{height: `${value}px`}} ></div>
-                ))}
+            <div className="Vis-container">
+                <div className="array-container">
+                    {array.map((value, idx) => (
+                        <div 
+                        className="array-bar" 
+                        key={idx}
+                        style={{height: `${value}%`}} ></div>
+                    ))}
+                </div>
+                <div className="button-container">
+                    <button className="button" onClick={() => this.resetArray()}>Generate New Array</button>
+                    <button className="button" onClick={() => this.insertionSort()}>Insertion Sort</button>
+                    <button className="button" onClick={() => this.selectionSort()}>Selection Sort</button>
+                    <button className="button" onClick={() => this.quickSort()}>Quick Sort</button>
+                    <button className="button" onClick={() => this.heapSort()}>Heap Sort</button>
+                </div>
             </div>
         );
     }
