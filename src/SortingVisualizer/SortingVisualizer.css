@@ -1,7 +1,7 @@
 @media screen and (min-width: 480px){
     .array-container {
         display: flex;
-        align-items: baseline;
+        align-items: flex-end;
         position: absolute;
         width: 60vw;
         height: 90vh;
