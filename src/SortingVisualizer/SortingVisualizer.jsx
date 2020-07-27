@@ -22,6 +22,7 @@ export default class SortingVisualizer extends React.Component {
         this.setState({array});
     }
 
+    mergeSort() {}
     insertionSort() {}
     selectionSort() {}
     quickSort() {}
@@ -42,6 +43,7 @@ export default class SortingVisualizer extends React.Component {
                 </div>
                 <div className="button-container">
                     <button className="button" onClick={() => this.resetArray()}>Generate New Array</button>
+                    <button className="button" onClick={() => this.mergeSort()}>Merge Sort</button>
                     <button className="button" onClick={() => this.insertionSort()}>Insertion Sort</button>
                     <button className="button" onClick={() => this.selectionSort()}>Selection Sort</button>
                     <button className="button" onClick={() => this.quickSort()}>Quick Sort</button>
