@@ -1,5 +1,8 @@
 import React from 'react';
-import {getMergeSortAnimations} from '../sortingAlgoritms/sortingAlgoritms';
+import {
+    getMergeSortAnimations,
+    getInsertionSortAnimations,
+} from '../sortingAlgoritms/sortingAlgoritms';
 import './SortingVisualizer.css';
 
 // Change this value for the speed of the animations.
@@ -56,10 +59,31 @@ export default class SortingVisualizer extends React.Component {
         }
       }
     
-    insertionSort() {}
+    insertionSort() {
+        const animations = getInsertionSortAnimations(this.state.array);
+        for(let i = 0; i < animations.length; i++) {
+            
+        }
+        }
     selectionSort() {}
     quickSort() {}
     heapSort() {}
+
+    // NOTE: This method will only work if your sorting algorithms actually return
+    // the sorted arrays; if they return the animations (as they currently do), then
+    // this method will be broken.
+    testSortingAlgorithms() {
+        for (let i = 0; i < 100; i++) {
+        const array = [];
+        const length = randomIntBetween(1, 1000);
+        for (let i = 0; i < length; i++) {
+            array.push(randomIntBetween(-1000, 1000));
+        }
+        const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
+        const mergeSortedArray = getInsertionSortAnimations(array.slice());
+        console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
+        }
+    }
 
     render() {
         const {array} = this.state;
@@ -90,3 +114,13 @@ export default class SortingVisualizer extends React.Component {
 function randomIntBetween(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+function arraysAreEqual(arrayOne, arrayTwo) {
+    if (arrayOne.length !== arrayTwo.length) return false;
+    for (let i = 0; i < arrayOne.length; i++) {
+      if (arrayOne[i] !== arrayTwo[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
