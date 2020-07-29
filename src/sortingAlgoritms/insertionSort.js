@@ -8,9 +8,7 @@ function getInsertionSortAnimations (array) {
       for(let i = 1; i < array.length; i++) {
         let currPos = array[i];
         let j = i - 1;
-        animations.push([i, j]);
         while(j >= 0 && currPos < array[j]) {
-          animations.push([i, j]);
           array[j + 1] = array[j];
           j -=1
         }
