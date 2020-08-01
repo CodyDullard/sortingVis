@@ -1,10 +1,12 @@
 import React from 'react';
 import {getMergeSortAnimations,} from '../sortingAlgoritms/mergeSort';
-import {getInsertionSortAnimations,} from '../sortingAlgoritms/insertionSort';
+import {getInsertionSortAnimations} from '../sortingAlgoritms/insertionSort';
+import {getSelectionSortAnimations} from '../sortingAlgoritms/selectionSort';
+import {getQuickSortAnimations} from '../sortingAlgoritms/quickSort';
 import './SortingVisualizer.css';
 
 // Change this value for the speed of the animations.
-const ANIMATION_SPEED_MS = 50;
+const ANIMATION_SPEED_MS = 5;
 
 // This is the main color of the array bars.
 const PRIMARY_COLOR = 'turquoise';
@@ -58,38 +60,31 @@ export default class SortingVisualizer extends React.Component {
       }
     
     insertionSort() {
-        const arr = this.state.array
-        if (arr.length <= 1) return arr;
         const arrayBars = document.getElementsByClassName('array-bar');
-        for(let i = 0; i < arr.length; i++) {
+        const arr = this.state.array;
+        if (arr.length <= 1) return arr;
+        for(let i = 1; i < arr.length; i++) {
             let currPos = arr[i];
             let j = i - 1;
-            setTimeout(() => {
-                const barOneStyle = arrayBars[i].style;
-                barOneStyle.backgroundColor = "yellow";
-                console.log("XXXXX");
-            }, i * ANIMATION_SPEED_MS);
-            setTimeout(() => {
-                while(j >= 0 && currPos < arr[j]) {
-                    console.log("YYYYYY");
-                    const swapBarStyle = arrayBars[j + 1].style;
-                    const barTwoStyle = arrayBars[j].style;
-                    const tmpHeigt = swapBarStyle.height;
-                    swapBarStyle.height = barTwoStyle.height;
-                    barTwoStyle.height = tmpHeigt;
-                    arr[j + 1] = arr[j];
-                    j -=1
-                }
-                arr[j + 1] = currPos;
-                const newBarStyle = arrayBars[j + 1].style;
-                newBarStyle.height = currPos;
-            }, i * ANIMATION_SPEED_MS);
+            while(j >= 0 && currPos < arr[j]) {
+                const barOneStyle = arrayBars[j].style;
+                const barTwoStyle = arrayBars[j + 1].style;
+                const tmpHeight = barOneStyle.height;
+                barOneStyle.height = barTwoStyle.height;
+                barTwoStyle.height = tmpHeight;
+                arr[j + 1] = arr[j];
+                j -=1
+            }
+            const barTwoStyle = arrayBars[j + 1].style;
+            barTwoStyle.height = currPos;
+            arr[j + 1] = currPos;
+        }
+        return arr;
 
-            setTimeout(() => {
-                const barOneStyle = arrayBars[i].style;
-                barOneStyle.backgroundColor = "blue";
-                console.log("XXXXX");
-            }, i * ANIMATION_SPEED_MS);
+            // setTimeout(() => {
+            //     const barOneStyle = arrayBars[i].style;
+            //     barOneStyle.backgroundColor = "blue";
+            // }, i * ANIMATION_SPEED_MS);
 
             // setTimeout(() => {
             //     const barOneStyle = arrayBars[i].style;
@@ -118,9 +113,12 @@ export default class SortingVisualizer extends React.Component {
         //     }, i * ANIMATION_SPEED_MS);
         // }, i * ANIMATION_SPEED_MS);
         }
+    selectionSort() {
+        this.testSortingAlgorithms(this.state.array.slice())
     }
-    selectionSort() {}
-    quickSort() {}
+    quickSort() {
+        this.testSortingAlgorithms(this.state.array.slice())
+    }
     heapSort() {}
 
     // NOTE: This method will only work if your sorting algorithms actually return
@@ -134,7 +132,7 @@ export default class SortingVisualizer extends React.Component {
             array.push(randomIntBetween(-1000, 1000));
         }
         const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-        const mergeSortedArray = getInsertionSortAnimations(array.slice());
+        const mergeSortedArray = getQuickSortAnimations(array.slice(), 0, array.length - 1);
         console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
         }
     }

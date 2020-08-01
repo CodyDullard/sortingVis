@@ -3,7 +3,6 @@ export {
   }
   
 function getInsertionSortAnimations (array) {
-    const animations = [];
       if (array.length <= 1) return array;
       for(let i = 1; i < array.length; i++) {
         let currPos = array[i];
@@ -14,5 +13,5 @@ function getInsertionSortAnimations (array) {
         }
         array[j + 1] = currPos;
       }
-      return animations;
+      return array;
   }
