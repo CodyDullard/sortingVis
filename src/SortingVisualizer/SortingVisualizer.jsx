@@ -58,27 +58,65 @@ export default class SortingVisualizer extends React.Component {
       }
     
     insertionSort() {
-        const arr = this.state.array.slice()
+        const arr = this.state.array
         if (arr.length <= 1) return arr;
         const arrayBars = document.getElementsByClassName('array-bar');
-        console.log(arrayBars);
         for(let i = 0; i < arr.length; i++) {
             let currPos = arr[i];
             let j = i - 1;
-            const barOneStyle = arrayBars[i].style;
-            barOneStyle.backgroundColor = "yellow";
-            while(j >= 0 && currPos < arr[j]) {
-                const barTwoStyle = arrayBars[j].style;
-                setTimeout(() => {
-                    barTwoStyle.backgroundColor = "green";
-                  }, i * ANIMATION_SPEED_MS);
-                barTwoStyle.backgroundColor = "purple";
-                arr[j + 1] = arr[j];
-                j -=1
-            }
-            barOneStyle.backgroundColor = "yellow";
-            arr[j + 1] = currPos;
-            console.log("True");
+            setTimeout(() => {
+                const barOneStyle = arrayBars[i].style;
+                barOneStyle.backgroundColor = "yellow";
+                console.log("XXXXX");
+            }, i * ANIMATION_SPEED_MS);
+            setTimeout(() => {
+                while(j >= 0 && currPos < arr[j]) {
+                    console.log("YYYYYY");
+                    const swapBarStyle = arrayBars[j + 1].style;
+                    const barTwoStyle = arrayBars[j].style;
+                    const tmpHeigt = swapBarStyle.height;
+                    swapBarStyle.height = barTwoStyle.height;
+                    barTwoStyle.height = tmpHeigt;
+                    arr[j + 1] = arr[j];
+                    j -=1
+                }
+                arr[j + 1] = currPos;
+                const newBarStyle = arrayBars[j + 1].style;
+                newBarStyle.height = currPos;
+            }, i * ANIMATION_SPEED_MS);
+
+            setTimeout(() => {
+                const barOneStyle = arrayBars[i].style;
+                barOneStyle.backgroundColor = "blue";
+                console.log("XXXXX");
+            }, i * ANIMATION_SPEED_MS);
+
+            // setTimeout(() => {
+            //     const barOneStyle = arrayBars[i].style;
+            //     barOneStyle.backgroundColor = "blue";
+            // }, i * ANIMATION_SPEED_MS);
+            // setTimeout(() => {
+            //     barOneStyle.backgroundColor = "black";
+            //     barTwoStyle.backgroundColor = "black";
+            // })
+        //     setTimeout(() => {
+        //         const barOneStyle = arrayBars[i].style;
+        //         barOneStyle.backgroundColor = "yellow";
+        //     setTimeout(() => {
+        //         while(j >= 0 && currPos < arr[j]) {
+        //             const swapBarStyle = arrayBars[j + 1].style;
+        //             const barTwoStyle = arrayBars[j].style;
+        //             swapBarStyle.backgroundColor = "red";
+        //             barTwoStyle.backgroundColor = "red";
+        //             arr[j + 1] = arr[j];
+        //             const tmpHeight = barTwoStyle.height;
+        //             barTwoStyle.height = swapBarStyle.height;
+        //             swapBarStyle.height = tmpHeight;
+        //             j -=1
+        //         }
+        //         arr[j + 1] = currPos;
+        //     }, i * ANIMATION_SPEED_MS);
+        // }, i * ANIMATION_SPEED_MS);
         }
     }
     selectionSort() {}
