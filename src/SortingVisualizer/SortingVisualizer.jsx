@@ -115,7 +115,9 @@ export default class SortingVisualizer extends React.Component {
         // }, i * ANIMATION_SPEED_MS);
         }
     selectionSort() {
-        const arrayBars = document.getElementsByClassName('array-bar');
+        let arrayBars = document.getElementsByClassName('array-bar');
+        console.log(this.state.array);
+        console.log(arrayBars);
         for(let i = 0; i < this.state.array.length; i++) {
             let minIdx = i
             setTimeout(() => {
@@ -123,20 +125,26 @@ export default class SortingVisualizer extends React.Component {
             } ,i * 100);
             for(let j = i + 1; j < this.state.array.length; j++) {
                 if(this.state.array[minIdx] > this.state.array[j]) {
-                    setTimeout(() => {
-                        arrayBars[minIdx].style.backgroundColor = "blue";
-                    } ,i * 100);
+                    const barOneStyle = arrayBars[minIdx].style;
+                    const barTwoStyle = arrayBars[j].style;
+                    if(minIdx != i) {
+                        changeBarCol(barOneStyle, "dark blue", i);
+                    } 
+                    changeBarCol(barTwoStyle, "red", i);
                     minIdx = j;
-                    setTimeout(() => {
-                        arrayBars[minIdx].style.backgroundColor = "red";
-                    } ,i * 100);
+                }
+                else {
+                    changeBarCol(arrayBars[j], "dark blue", i);
                 }
             }
-            setTimeout(() => {
-                const minIdxBarStyle = arrayBars[minIdx].style;
-                const origionalBarStyle = arrayBars[i].style;
-                swapBars(minIdxBarStyle, origionalBarStyle);
-            } ,i * 100);
+            if(minIdx != i) {
+                setTimeout(() => {
+                    const minIdxBarStyle = arrayBars[minIdx].style;
+                    const origionalBarStyle = arrayBars[i].style;
+                    swapBars(minIdxBarStyle, origionalBarStyle);
+                    changeBarCol(minIdxBarStyle, "dark blue", i);
+                    changeBarCol(origionalBarStyle, "dark blue", i);
+                } ,i * 100);}
             swap(this.state.array, i, minIdx);
           }
           return this.state.array;
@@ -207,3 +215,9 @@ function arraysAreEqual(arrayOne, arrayTwo) {
     }
     return true;
   }
+
+function changeBarCol(barStyle, col, i) {
+    setTimeout(() => {
+        barStyle.backgroundColor = col;
+    } , i * ANIMATION_SPEED_MS);
+}
