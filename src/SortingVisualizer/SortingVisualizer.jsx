@@ -1,8 +1,5 @@
 import React from 'react';
 import {getMergeSortAnimations,} from '../sortingAlgoritms/mergeSort';
-import {insertionSortAnimations} from '../sortingAlgoritms/insertionSort';
-import {selectionSortAnimations} from '../sortingAlgoritms/selectionSort';
-import {quickSortAnimations} from '../sortingAlgoritms/quickSort';
 import {swap} from '../sortingAlgoritms/swap';
 import './SortingVisualizer.css';
 
@@ -12,6 +9,7 @@ const PRIMARY_COLOUR = 'darkblue';
 // This is the color of array bars that are being compared throughout the animations.
 const SECONDARY_COLOR = 'red';
 
+// Global variables used to organise the setTimeouts.
 const ANIMATION_SPEED_MS = 3;
 var DELAY = 0;
 

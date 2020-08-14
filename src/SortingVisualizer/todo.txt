@@ -1,0 +1,10 @@
+TODO:
+
+1)Finish animations for algos and seperate them into seperate files(Also fix bug which happens when a 
+new array is generated and selection/insertioon sort is run).
+2)Make text box which changes info based on current algo.
+3)Make it so that buttons are unusable while algo is running.
+4)Clean up css and improve ui.
+
+Possible features:
+1)Change array size and speed.
