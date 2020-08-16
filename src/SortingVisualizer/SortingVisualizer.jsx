@@ -1,5 +1,7 @@
 import React from 'react';
 import {getMergeSortAnimations,} from '../sortingAlgoritms/mergeSort';
+import {selectionSortAnimations,} from '../sortingAlgoritms/selectionSort';
+import {insertionSortAnimations,} from '../sortingAlgoritms/insertionSort';
 import {swap} from '../sortingAlgoritms/swap';
 import './SortingVisualizer.css';
 
@@ -11,7 +13,6 @@ const SECONDARY_COLOR = 'red';
 
 // Global variables used to organise the setTimeouts.
 const ANIMATION_SPEED_MS = 3;
-var DELAY = 0;
 
 export default class SortingVisualizer extends React.Component {
     constructor(props) {
@@ -28,7 +29,7 @@ export default class SortingVisualizer extends React.Component {
 
     resetArray() {
         const array = [];
-        for(let i = 0; i < 200; i++) {
+        for(let i = 0; i < 100; i++) {
             array.push(randomIntBetween(1,100));
         }
         this.setState({array});
@@ -64,48 +65,11 @@ export default class SortingVisualizer extends React.Component {
       }
     
     insertionSort() {
-        const array = this.state.array;
-        const arrayBars = document.getElementsByClassName('array-bar');
-        for(let i = 1; i < array.length; i++) {
-            let currPos = array[i];
-            changeBarCol(arrayBars[i].style, SECONDARY_COLOR);
-            let j = i - 1;
-            while(j >= 0 && currPos < array[j]) {
-                changeBarCol(arrayBars[j].style, SECONDARY_COLOR)
-                array[j + 1] = array[j];
-                swapBarHeight(arrayBars[j + 1].style, arrayBars[j].style);
-                changeBarCol(arrayBars[j].style, PRIMARY_COLOUR)
-                j -=1
-            }
-            array[j + 1] = currPos;
-        }
-        for(let barIdx = 0; barIdx < arrayBars.length; barIdx++) {
-            changeBarCol(arrayBars[barIdx].style, "green");
-        }
-        DELAY = 0;
+        insertionSortAnimations(this.state.array);
     }
 
     selectionSort() {
-        const array = this.state.array;
-        for(let i = 0; i < array.length; i++) {
-            const arrayBars = document.getElementsByClassName('array-bar');
-            let minIdx = i
-            changeBarCol(arrayBars[minIdx].style, SECONDARY_COLOR);
-            for(let j = i + 1; j < array.length; j++) {
-                if(array[minIdx] > array[j]) {
-                    changeBarCol(arrayBars[minIdx].style, SECONDARY_COLOR);
-                    minIdx = j;
-                    changeBarCol(arrayBars[minIdx].style, PRIMARY_COLOUR);
-                }
-            }
-            swap(array, i, minIdx);
-            const barOneStyle = arrayBars[i].style;
-            const barTwoStyle = arrayBars[minIdx].style;
-            swapBarHeight(barOneStyle, barTwoStyle);
-            changeBarCol(arrayBars[minIdx].style, PRIMARY_COLOUR);
-            changeBarCol(arrayBars[i].style, "green");
-          }
-          DELAY = 0;
+        selectionSortAnimations(this.state.array);
     }
     quickSort() {
         this.testSortingAlgorithms()
@@ -166,18 +130,4 @@ function arraysAreEqual(arrayOne, arrayTwo) {
       }
     }
     return true;
-}
-
-function swapBarHeight(barOne, barTwo) {
-    setTimeout(() => {
-        const tmpHeight = barOne.height;
-        barOne.height = barTwo.height;
-        barTwo.height = tmpHeight;
-      }, DELAY += ANIMATION_SPEED_MS);
-}
-
-function changeBarCol(bar, col) {
-    setTimeout(() => {
-        bar.backgroundColor = col;
-      }, DELAY += ANIMATION_SPEED_MS);
 }

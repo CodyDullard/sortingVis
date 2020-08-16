@@ -12,7 +12,7 @@
 
     .array-bar {
         align-items: bottom;
-        width: 2px;
+        width: 1%;
         background-color: darkblue;
         display: inline-block;
         margin: 0 1px;
