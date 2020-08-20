@@ -1,8 +1,9 @@
 import React from 'react';
+import {resetDelay, makeGraphGreen} from './animationHelpers';
 import {getMergeSortAnimations,} from '../sortingAlgoritms/mergeSort';
 import {selectionSortAnimations,} from '../sortingAlgoritms/selectionSort';
 import {insertionSortAnimations,} from '../sortingAlgoritms/insertionSort';
-import {swap} from '../sortingAlgoritms/swap';
+import {quickSortAnimations} from '../sortingAlgoritms/quickSort';
 import './SortingVisualizer.css';
 
 // This is the main color of the array bars.
@@ -13,6 +14,8 @@ const SECONDARY_COLOR = 'red';
 
 // Global variables used to organise the setTimeouts.
 const ANIMATION_SPEED_MS = 3;
+
+const arrayBars = document.getElementsByClassName('array-bar');
 
 export default class SortingVisualizer extends React.Component {
     constructor(props) {
@@ -66,15 +69,22 @@ export default class SortingVisualizer extends React.Component {
     
     insertionSort() {
         insertionSortAnimations(this.state.array);
+        makeGraphGreen();
+        resetDelay();
     }
 
     selectionSort() {
         selectionSortAnimations(this.state.array);
+        resetDelay();
     }
     quickSort() {
-        this.testSortingAlgorithms()
+        quickSortAnimations(this.state.array, 0, this.state.array.length - 1);
+        makeGraphGreen();
+        resetDelay();
     }
-    heapSort() {}
+    heapSort() {
+        checkBars();
+    }
 
     // NOTE: This method will only work if your sorting algorithms actually return
     // the sorted arrays; if they return the animations (as they currently do), then
@@ -87,8 +97,8 @@ export default class SortingVisualizer extends React.Component {
             array.push(randomIntBetween(-1000, 1000));
         }
         const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-        const mergeSortedArray = this.selectionSort();
-        console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
+        const ourSortedArray = quickSortAnimations(array.slice(), 0, array.length - 1);
+        console.log(arraysAreEqual(javaScriptSortedArray, ourSortedArray));
         }
     }
 
@@ -126,8 +136,14 @@ function arraysAreEqual(arrayOne, arrayTwo) {
     if (arrayOne.length !== arrayTwo.length) return false;
     for (let i = 0; i < arrayOne.length; i++) {
       if (arrayOne[i] !== arrayTwo[i]) {
-        return false;
+          return false;
       }
     }
     return true;
+}
+
+function checkBars() {
+    for(let barIdx = 0; barIdx < arrayBars.length; barIdx++) {
+        console.log(arrayBars[barIdx].style.height);
+    }
 }
