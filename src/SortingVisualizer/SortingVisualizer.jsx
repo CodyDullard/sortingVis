@@ -4,6 +4,7 @@ import {getMergeSortAnimations,} from '../sortingAlgoritms/mergeSort';
 import {selectionSortAnimations,} from '../sortingAlgoritms/selectionSort';
 import {insertionSortAnimations,} from '../sortingAlgoritms/insertionSort';
 import {quickSortAnimations} from '../sortingAlgoritms/quickSort';
+import {heapSortAnimations} from '../sortingAlgoritms/heapSort';
 import './SortingVisualizer.css';
 
 // This is the main color of the array bars.
@@ -83,7 +84,7 @@ export default class SortingVisualizer extends React.Component {
         resetDelay();
     }
     heapSort() {
-        checkBars();
+        this.testSortingAlgorithms();
     }
 
     // NOTE: This method will only work if your sorting algorithms actually return
@@ -97,8 +98,15 @@ export default class SortingVisualizer extends React.Component {
             array.push(randomIntBetween(-1000, 1000));
         }
         const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-        const ourSortedArray = quickSortAnimations(array.slice(), 0, array.length - 1);
-        console.log(arraysAreEqual(javaScriptSortedArray, ourSortedArray));
+        const ourSortedArray = heapSortAnimations(array.slice(), 0, array.length - 1);
+        const equal = arraysAreEqual(javaScriptSortedArray, ourSortedArray);
+        console.log(equal);
+        // if(equal === true) {
+        //     console.log(equal);
+        //     }
+        // else {
+        //     console.log(javaScriptSortedArray, ourSortedArray);
+        // }
         }
     }
 
