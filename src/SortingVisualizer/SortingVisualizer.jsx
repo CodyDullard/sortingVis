@@ -84,7 +84,8 @@ export default class SortingVisualizer extends React.Component {
         resetDelay();
     }
     heapSort() {
-        this.testSortingAlgorithms();
+        heapSortAnimations(this.state.array);
+        resetDelay();
     }
 
     // NOTE: This method will only work if your sorting algorithms actually return
