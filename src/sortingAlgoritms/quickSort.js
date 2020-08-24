@@ -9,7 +9,7 @@ const CURRENT_COLOR = 'yellow';
 // This is the colour of the current i and j bar.
 const SECONDARY_COLOUR = 'red';
 // This is the colour of the final position of the bar.
-// const FINAL_COLOUR = 'green';
+const FINAL_COLOUR = 'green';
 
 const ANIMATION_SPEED = 15;
 
@@ -48,15 +48,15 @@ function partition(array, left, right) {
             changeBarCol(arrayBars[i], PRIMARY_COLOUR, ANIMATION_SPEED);
         }
     }
-    // if (i >= pivotIdx) {
-    //     changeBarCol(arrayBars[i], FINAL_COLOUR, ANIMATION_SPEED);
-    // }
-    // else if(j <= pivotIdx) {
-    //     changeBarCol(arrayBars[j], FINAL_COLOUR, ANIMATION_SPEED);
-    // }
-    // else {
-    //     changeBarCol(arrayBars[pivotIdx], FINAL_COLOUR, ANIMATION_SPEED);
-    // }
+    if (i >= pivotIdx) {
+        changeBarCol(arrayBars[i], FINAL_COLOUR, ANIMATION_SPEED);
+    }
+    else if(j <= pivotIdx) {
+        changeBarCol(arrayBars[j], FINAL_COLOUR, ANIMATION_SPEED);
+    }
+    else {
+        changeBarCol(arrayBars[pivotIdx], FINAL_COLOUR, ANIMATION_SPEED);
+    }
     return i;
 }
 function quickSortAnimations(array, left, right) {
