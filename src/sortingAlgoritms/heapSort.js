@@ -9,7 +9,7 @@ const MAX_COLOR = 'yellow';
 // This is the colour of the current smallest bar.
 const FINAL_COLOUR = 'green';
 
-const ANIMATION_SPEED = 1;
+const ANIMATION_SPEED = 3;
 
 const arrayBars = document.getElementsByClassName('array-bar');
 
