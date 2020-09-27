@@ -138,6 +138,9 @@ export default class SortingVisualizer extends React.Component {
                         style={{height: `${value * 0.99}%`}} ></div>
                     ))}
                 </div>
+                {/* <div className="error-warning">
+                    <h3>There is currently a bug when generating a new array so press the button twice and it will work.</h3>
+                </div> */}
             </div>
         );
     }

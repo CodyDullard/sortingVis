@@ -1,3 +1,7 @@
+The app is hosted here <https://codydullard.github.io/sortingVis/>
+
+NOTE: There is currently a bug when generating a new array. It sometimes displays incorrectly and is currently being worked on.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
