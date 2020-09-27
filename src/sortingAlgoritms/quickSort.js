@@ -11,7 +11,7 @@ const SECONDARY_COLOUR = 'red';
 // This is the colour of the final position of the bar.
 const FINAL_COLOUR = 'green';
 
-const ANIMATION_SPEED = 15;
+const ANIMATION_SPEED = 1;
 
 const arrayBars = document.getElementsByClassName('array-bar');
 

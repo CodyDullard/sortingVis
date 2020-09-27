@@ -11,11 +11,12 @@ const SMALLEST_COLOUR = 'red';
 // This is the colour of the final position of the bar.
 const FINAL_COLOUR = 'green';
 
-const ANIMATION_SPEED = 5;
+const ANIMATION_SPEED = 1;
+
+const arrayBars = document.getElementsByClassName('array-bar');
 
 function selectionSortAnimations (array) {
     for(let i = 0; i < array.length; i++) {
-        const arrayBars = document.getElementsByClassName('array-bar');
         let minIdx = i
         changeBarCol(arrayBars[minIdx], CURRENT_COLOR, ANIMATION_SPEED);
         for(let j = i + 1; j < array.length; j++) {
