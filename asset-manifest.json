@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/codydullard.github.io/sortingVis/static/css/main.ee0a7903.chunk.css",
-    "main.js": "/codydullard.github.io/sortingVis/static/js/main.23fae0a3.chunk.js",
-    "main.js.map": "/codydullard.github.io/sortingVis/static/js/main.23fae0a3.chunk.js.map",
-    "runtime-main.js": "/codydullard.github.io/sortingVis/static/js/runtime-main.9036b31b.js",
-    "runtime-main.js.map": "/codydullard.github.io/sortingVis/static/js/runtime-main.9036b31b.js.map",
-    "static/js/2.b4e5d897.chunk.js": "/codydullard.github.io/sortingVis/static/js/2.b4e5d897.chunk.js",
-    "static/js/2.b4e5d897.chunk.js.map": "/codydullard.github.io/sortingVis/static/js/2.b4e5d897.chunk.js.map",
-    "index.html": "/codydullard.github.io/sortingVis/index.html",
-    "precache-manifest.a34ca056b0efb5d565575f151d3dc695.js": "/codydullard.github.io/sortingVis/precache-manifest.a34ca056b0efb5d565575f151d3dc695.js",
-    "service-worker.js": "/codydullard.github.io/sortingVis/service-worker.js",
-    "static/css/main.ee0a7903.chunk.css.map": "/codydullard.github.io/sortingVis/static/css/main.ee0a7903.chunk.css.map",
-    "static/js/2.b4e5d897.chunk.js.LICENSE.txt": "/codydullard.github.io/sortingVis/static/js/2.b4e5d897.chunk.js.LICENSE.txt"
+    "main.css": "/sortingVis/static/css/main.ee0a7903.chunk.css",
+    "main.js": "/sortingVis/static/js/main.23fae0a3.chunk.js",
+    "main.js.map": "/sortingVis/static/js/main.23fae0a3.chunk.js.map",
+    "runtime-main.js": "/sortingVis/static/js/runtime-main.dc5c3640.js",
+    "runtime-main.js.map": "/sortingVis/static/js/runtime-main.dc5c3640.js.map",
+    "static/js/2.b4e5d897.chunk.js": "/sortingVis/static/js/2.b4e5d897.chunk.js",
+    "static/js/2.b4e5d897.chunk.js.map": "/sortingVis/static/js/2.b4e5d897.chunk.js.map",
+    "index.html": "/sortingVis/index.html",
+    "precache-manifest.bcae38ff9035ee1b0ba0b54385e0854c.js": "/sortingVis/precache-manifest.bcae38ff9035ee1b0ba0b54385e0854c.js",
+    "service-worker.js": "/sortingVis/service-worker.js",
+    "static/css/main.ee0a7903.chunk.css.map": "/sortingVis/static/css/main.ee0a7903.chunk.css.map",
+    "static/js/2.b4e5d897.chunk.js.LICENSE.txt": "/sortingVis/static/js/2.b4e5d897.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.9036b31b.js",
+    "static/js/runtime-main.dc5c3640.js",
     "static/js/2.b4e5d897.chunk.js",
     "static/css/main.ee0a7903.chunk.css",
     "static/js/main.23fae0a3.chunk.js"
