@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/codydullard.github.io/sortingVis/precache-manifest.aa4bf86e24564804b11c5fd0926ee68f.js"
+  "/codydullard.github.io/sortingVis/precache-manifest.a34ca056b0efb5d565575f151d3dc695.js"
 );
 
 self.addEventListener('message', (event) => {
